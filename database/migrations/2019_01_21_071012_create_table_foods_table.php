@@ -23,6 +23,12 @@ class CreateTableFoodsTable extends Migration
             $table->string('rating');
             $table->integer('top');
             $table->integer('new');
+            $table->integer('promotion_id')->unsigned();
+            $table->foreign('promotion_id')
+                ->references('id')
+                ->on('promotion')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

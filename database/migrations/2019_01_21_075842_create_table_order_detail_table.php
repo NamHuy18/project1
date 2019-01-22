@@ -17,6 +17,18 @@ class CreateTableOrderDetailTable extends Migration
             $table->increments('id');
             $table->integer('quanity');
             $table->double('unit_price');
+            $table->integer('order_id')->unsigned();
+            $table->integer('food_id')->unsigned();
+            $table->foreign('order_id')
+                ->references('id')
+                ->on('orders')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('food_id')
+                ->references('id')
+                ->on('foods')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -17,6 +17,12 @@ class CreateTableImageFoodTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('image');
+            $table->integer('food_id')->unsigned();
+            $table->foreign('food_id')
+                ->references('id')
+                ->on('foods')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

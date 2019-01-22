@@ -15,7 +15,21 @@ class CreateTableCategoryFoodTable extends Migration
     {
         Schema::create('category_food', function (Blueprint $table) {
             $table->increments('id');
+            // $table->unsignedInteger('category_id');
+            // $table->unsignedInteger('food_id');
             $table->timestamps();
+            $table->integer('food_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            $table->foreign('food_id')
+                ->references('id')
+                ->on('foods')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

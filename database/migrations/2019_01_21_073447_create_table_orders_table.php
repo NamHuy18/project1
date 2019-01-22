@@ -19,6 +19,18 @@ class CreateTableOrdersTable extends Migration
             $table->double('total');
             $table->string('payment');
             $table->string('note');
+            $table->integer('user_id')->unsigned();
+            $table->integer('store_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreign('store_id')
+                ->references('id')
+                ->on('stores')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
