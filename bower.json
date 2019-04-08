@@ -1,0 +1,21 @@
+{
+  "name": "Project1",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Nam Huy <namhuydo18@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/NamHuy18/project1",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower_components": "https://github.com/NamHuy18/bower_components"
+  }
+}

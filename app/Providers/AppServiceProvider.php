@@ -4,6 +4,11 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\Category;
+use App\Store;
+use App\Banner;
+use App\Food;
+use Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $category = Category::all();
+        view()->share('category', $category);
         Schema::defaultStringLength(191);
     }
 
@@ -24,6 +31,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(CategoryRepository::class);
     }
 }

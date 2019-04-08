@@ -15,10 +15,16 @@ class CreateTableNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
+            $table->string('title');
             $table->string('content');
             $table->string('image');
             $table->string('description');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
